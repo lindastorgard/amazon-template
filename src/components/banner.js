@@ -27,7 +27,7 @@ const Banner = ({
           position: "absolute",
           top: 0,
           left: 0,
-          background: "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))",
+          background: "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -45,20 +45,34 @@ const Banner = ({
           sx={{
             fontFamily: "body",
             lineHeight: "heading",
-            fontWeight: "body",
+            fontWeight: "200",
+            paddingX: [2, 2, 5],
             fontSize: [2, 3],
           }}
         >
           {text}
         </p>
         {bannerLink && (
-          <Outlinebutton href={bannerLink.slug} text={bannerLink.slug} />
+          <div
+            sx={{
+              a: {
+                color: "background",
+                textTransform: "capitalize",
+              },
+            }}
+          >
+            <div>
+              <Outlinebutton href={bannerLink.slug} text={bannerLink.slug} />
+            </div>
+          </div>
         )}
         {bannerExternalLink?.length > 0 && (
-          <Outlinebutton
-            href={bannerExternalLink}
-            text={bannerExternalLinkTitle}
-          />
+          <div>
+            <Outlinebutton
+              href={bannerExternalLink}
+              text={bannerExternalLinkTitle}
+            />
+          </div>
         )}
       </div>
     </BackgroundImage>

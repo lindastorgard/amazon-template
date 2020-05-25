@@ -53,16 +53,44 @@ const Footer = () => {
   const style = {
     heading: {
       color: "background",
-      mb: 2,
+      mb: 1,
       mt: 3,
     },
-    link: {
-      color: "background",
-      fontSize: 1,
-      textDecoration: "none",
+    linkStyle: {
       display: "block",
-      ":hover": {
-        color: "highlight",
+      fontSize: 0,
+      textDecoration: "none",
+      fontFamily: "body",
+      color: "background",
+      p: {
+        display: "inline-block",
+        mx: 0,
+        my: 0,
+        "::after": {
+          content: '" "',
+          display: "block",
+          width: "0%",
+          borderBottom: "1px solid",
+          borderColor: "background",
+          transition: "0.2s",
+          borderRadius: "2px",
+          mr: "auto",
+        },
+        ":hover": {
+          "::after": {
+            width: "100%",
+          },
+        },
+        ":active": {
+          "::after": {
+            width: "100%",
+          },
+        },
+        "&.active": {
+          "::after": {
+            width: "100%",
+          },
+        },
       },
     },
     flex: {
@@ -70,7 +98,13 @@ const Footer = () => {
       mx: [0, 3, 5],
     },
     hr: {
-      mb: 2,
+      mb: 1,
+    },
+    p: {
+      color: "background",
+      fontSize: 0,
+      m: 0,
+      mb: 1,
     },
   };
 
@@ -94,21 +128,13 @@ const Footer = () => {
           <div sx={style.hr}>
             <Hr />
           </div>
-          <p
-            sx={{
-              color: "background",
-              fontSize: 1,
-              m: 0,
-              mb: 1,
-            }}
-          >
-            {companyName}
-          </p>
+          <p sx={style.p}>{companyName}</p>
           <div
             sx={{
               p: {
                 variant: "markdownText.p",
                 color: "background",
+                fontSize: 0,
               },
             }}
             dangerouslySetInnerHTML={createMarkup(
@@ -116,11 +142,11 @@ const Footer = () => {
             )}
           />
           <div sx={{ pt: 2 }}>
-            <a href={`tel:${phoneNumber}`} sx={style.link}>
-              {phoneNumber}
+            <a href={`tel:${phoneNumber}`} sx={style.linkStyle}>
+              <p>{phoneNumber}</p>
             </a>
-            <a href={`mailto:${email}`} sx={style.link}>
-              {email}
+            <a href={`mailto:${email}`} sx={style.linkStyle}>
+              <p>{email}</p>
             </a>
           </div>
         </div>
@@ -135,9 +161,9 @@ const Footer = () => {
               href={urlLink}
               target="_blank"
               rel="noreferrer noopener"
-              sx={style.link}
+              sx={style.linkStyle}
             >
-              {title}
+              <p>{title}</p>
             </a>
           ))}
         </div>
@@ -146,19 +172,8 @@ const Footer = () => {
           <div sx={style.hr}>
             <Hr />
           </div>
-          <Link
-            to={slug}
-            aria-label={`Link to ${slug}`}
-            sx={{
-              color: "background",
-              fontSize: 1,
-              textDecoration: "none",
-              ":hover": {
-                fontWeight: "heading",
-              },
-            }}
-          >
-            {privacyLink}
+          <Link to={slug} aria-label={`Link to ${slug}`} sx={style.linkStyle}>
+            <p>{privacyLink}</p>
           </Link>
         </div>
       </div>
@@ -178,9 +193,6 @@ const Footer = () => {
               color: "background",
               fontSize: 0,
               textDecoration: "none",
-              ":hover": {
-                fontWeight: "heading",
-              },
             }}
           >
             &nbsp;Powered by Snackbar Studios

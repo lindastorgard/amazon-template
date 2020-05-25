@@ -43,7 +43,7 @@ const HeroSection = () => {
     <div
       sx={{
         display: "flex",
-        height: ["calc(100vh - 60px)"],
+        height: "100vh",
         flexDirection: ["column-reverse", null, "row"],
       }}
     >
@@ -67,13 +67,21 @@ const HeroSection = () => {
               maxWidth: "500px",
               color: "highlight",
               fontSize: [2, 3],
-              fontWeight: "body",
+              fontWeight: "200",
               lineHeight: 1.2,
             }}
           >
             {heroDescription}
           </p>
-          <Styled.a href={heroLink.slug}>{heroLink.slug}</Styled.a>
+          <div
+            sx={{
+              a: {
+                color: "highlight",
+              },
+            }}
+          >
+            <Styled.a href={heroLink.slug}>{heroLink.slug}</Styled.a>
+          </div>
         </div>
       </div>
       <div

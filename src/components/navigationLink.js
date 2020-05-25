@@ -3,14 +3,20 @@ import PropTypes from "prop-types";
 import { jsx } from "theme-ui";
 import { Link } from "gatsby";
 
-const NavigationLink = ({ children, href, open }) => {
+const NavigationLink = ({
+  children,
+  href,
+  open,
+  showBackground,
+  landingpage,
+}) => {
   return (
     <li
       sx={{
         listStyle: "none",
         position: "relative",
         height: ["auto", "25px"],
-        ml: 4,
+        ml: [0, 4, null],
         mt: [4, "0px"],
         pl: 1,
       }}
@@ -24,36 +30,33 @@ const NavigationLink = ({ children, href, open }) => {
           position: "relative",
           textDecoration: "none",
           fontFamily: "body",
-          fontWeight: "heading",
-          fontSize: [4, 1],
-          color: "text",
+          fontSize: [3, 1],
+          color: showBackground || !landingpage ? "text" : "background",
           zIndex: 2,
           "::after": {
             content: '" "',
-            position: "absolute",
-            zIndex: -1,
             display: "block",
-            width: "120%",
-            height: ["24px", "16px"],
-            ml: "-20%",
-            mt: ["-24px", "-12px"],
-            backgroundColor: "primary",
-            opacity: 0,
-            transition: "0.5s",
+            width: "0%",
+            borderBottom: "1px solid",
+            borderColor:
+              showBackground || !landingpage ? "highlight" : "background",
+            transition: "0.2s",
+            borderRadius: "2px",
+            margin: "auto",
           },
           ":hover": {
             "::after": {
-              opacity: 1,
+              width: "100%",
             },
           },
           ":active": {
             "::after": {
-              opacity: 1,
+              width: "100%",
             },
           },
           "&.active": {
             "::after": {
-              opacity: 1,
+              width: "100%",
             },
           },
         }}

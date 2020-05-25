@@ -20,10 +20,12 @@ const Logo = () => {
   );
   return (
     <Link to="/">
-      <div sx={{ width: "100px", height: "100%" }}>
+      <div sx={{ width: "80px", maxHeight: "70px", height: "70px", py: 2 }}>
         <Image
           image={datoCmsLogo.brandLogo.fluid}
           alt={datoCmsLogo.brandLogo.alt}
+          style={{ maxHeight: "100%" }}
+          imgStyle={{ objectFit: "contain" }}
         />
       </div>
     </Link>

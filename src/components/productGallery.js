@@ -1,20 +1,20 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui";
+import { jsx, Styled } from "theme-ui";
 import { Fragment } from "react";
 import Image from "../components/image";
 import StyledLink from "../components/styledLink";
 
-const ProductGallery = ({ products }) => {
+const ProductGallery = ({ title, products }) => {
   return (
     <Fragment>
-      <h2 sx={{ textAlign: "center", color: "highlight", mt: [6], mb: "0px" }}>
-        Feature products
-      </h2>
+      <Styled.h2 sx={{ textAlign: "center", mt: 6, mb: "0px" }}>
+        {title}
+      </Styled.h2>
       <div
         sx={{
           display: "flex",
           flexWrap: "wrap",
-          justifyContent: "space-around",
+          justifyContent: "center",
           p: 4,
         }}
       >
@@ -22,14 +22,21 @@ const ProductGallery = ({ products }) => {
           return (
             <div
               key={product.id}
-              sx={{ minWidth: "250px", textAlign: "center", pb: 4 }}
+              sx={{
+                minWidth: "300px",
+                textAlign: "center",
+                py: 4,
+                px: [2, 3, null],
+              }}
             >
               <Image
                 image={product.productImage.fluid}
                 alt={product.productImage.alt}
               />
               <p>{product.productTitle}</p>
-              <StyledLink href="/products">View products</StyledLink>
+              <div sx={{ pt: 2 }}>
+                <StyledLink href="/products">View products</StyledLink>
+              </div>
             </div>
           );
         })}

@@ -4,12 +4,12 @@ import Image from "./image";
 import { createMarkup } from "../utils/functions";
 import { Fragment } from "react";
 
-const SingleProductGallery = ({ products }) => {
+const SingleProductGallery = ({ title, products }) => {
   return (
     <Fragment>
-      <h2 sx={{ textAlign: "center", color: "highlight", mt: [6], mb: "0px" }}>
-        Feature products
-      </h2>
+      <Styled.h2 sx={{ textAlign: "center", mt: 6, mb: "0px" }}>
+        {title}
+      </Styled.h2>
       <div
         sx={{
           display: "flex",
@@ -30,14 +30,14 @@ const SingleProductGallery = ({ products }) => {
           }}
         >
           <Styled.h3>{products[0].productTitle}</Styled.h3>
-          <Styled.p>
-            <div
-              dangerouslySetInnerHTML={createMarkup(
-                products[0].productDescrriptionNode.childMarkdownRemark.html
-              )}
-            />
-          </Styled.p>
-          <Styled.a href="/products">View product</Styled.a>
+          <div
+            dangerouslySetInnerHTML={createMarkup(
+              products[0].productDescriptionNode.childMarkdownRemark.html
+            )}
+          />
+          <div sx={{ pt: 2 }}>
+            <Styled.a href="/products">View product</Styled.a>
+          </div>
         </div>
         <div sx={{ flex: "1", padding: [2, 4, 5] }}>
           <Image

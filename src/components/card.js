@@ -8,17 +8,20 @@ const Card = ({ section }) => {
   return (
     <Fragment>
       {section.map(
-        ({
-          heading,
-          price,
-          descriptionNode,
-          specificationTitle,
-          specificationListNode,
-          externalButtonText,
-          externalButtonLink,
-          imageGallery,
-        }) => (
-          <Fragment key={section.id}>
+        (
+          {
+            heading,
+            price,
+            descriptionNode,
+            specificationTitle,
+            specificationListNode,
+            externalButtonText,
+            externalButtonLink,
+            imageGallery,
+          },
+          index
+        ) => (
+          <Fragment key={index}>
             <DesktopSlider
               heading={heading}
               price={price}

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 
-const Hamburger = ({ open, setOpen }) => {
+const Hamburger = ({ open, setOpen, landingpage, showBackground }) => {
   const burgerLine = (action) => {
     let animation = {};
     if (open) {
@@ -21,7 +21,7 @@ const Hamburger = ({ open, setOpen }) => {
       display: "block",
       padding: 0,
       height: "2px",
-      backgroundColor: "black",
+      backgroundColor: showBackground || !landingpage ? "text" : "background",
       marginY: 1,
       borderRadius: "3px",
       ":first-of-type": {

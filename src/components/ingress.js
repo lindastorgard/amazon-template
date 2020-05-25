@@ -11,6 +11,7 @@ const Ingress = ({ children }) => {
         m: "0 auto",
         mb: 6,
         p: [2],
+        fontSize: [1, 2, null],
       }}
     >
       {children}

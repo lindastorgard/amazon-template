@@ -2,6 +2,7 @@
 import { jsx, Styled } from "theme-ui";
 import { useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/layout";
+import SEO from "../components/seo";
 import MainContainer from "../components/mainContainer";
 import Image from "../components/image";
 import { createMarkup } from "../utils/functions";
@@ -11,7 +12,7 @@ const Contact = () => {
     graphql`
       query {
         datoCmsContactPage {
-          pageTitle
+          title
           phoneNumber
           email
           companyName
@@ -31,7 +32,7 @@ const Contact = () => {
     `
   );
   const {
-    pageTitle,
+    title,
     companyName,
     adressNode,
     phoneNumber,
@@ -59,6 +60,7 @@ const Contact = () => {
     image: {
       width: "100%",
       height: "100%",
+      maxHeight: "400px",
       div: {
         width: "100%",
         height: "100%",
@@ -68,6 +70,7 @@ const Contact = () => {
 
   return (
     <Layout>
+      <SEO title={title} />
       <MainContainer>
         <div
           sx={{
@@ -75,7 +78,7 @@ const Contact = () => {
             flexDirection: ["column-reverse", "row", null],
             width: "100%",
             height: "100%",
-            mt: 5,
+            my: [3, 7, null],
           }}
         >
           <div
@@ -84,17 +87,15 @@ const Contact = () => {
               backgroundColor: "primary",
             }}
           >
-            <div sx={{ p: 5 }}>
+            <div sx={{ p: [5, null, 6] }}>
               <div
                 sx={{
                   color: "highlight",
                   fontFamily: "body",
                   textTransform: "uppercase",
                 }}
-              >
-                <h1>{pageTitle}</h1>
-              </div>
-              <div sx={{ my: 3, color: "highlight" }}>
+              ></div>
+              <div sx={{ color: "highlight", mb: 3 }}>
                 <Styled.h2>{companyName}</Styled.h2>
               </div>
               <div

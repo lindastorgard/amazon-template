@@ -17,7 +17,12 @@ const PageSection = ({ section }) => {
         },
       }}
     >
-      <div sx={{ flex: "1", div: { height: "100%" } }}>
+      <div
+        sx={{
+          flex: "1",
+          div: { height: "100%", maxHeight: ["500px", "750px", "600px"] },
+        }}
+      >
         <Image image={section.blockImage.fluid} alt={section.blockImage.alt} />
       </div>
       <div sx={{ flex: "1" }}>
@@ -27,12 +32,11 @@ const PageSection = ({ section }) => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            textAlign: "center",
             px: [4, 6],
             py: [6],
           }}
         >
-          <Styled.h2 sx={{ color: "highlight", mb: 3 }}>
+          <Styled.h2 sx={{ color: "text", mb: 3 }}>
             {section.blockTitle}
           </Styled.h2>
           <div
@@ -42,24 +46,30 @@ const PageSection = ({ section }) => {
             )}
           />
           {section.buttonLink && (
-            <StyledLink href={section.buttonLink.slug}>
-              {section.buttonLink.slug}
-            </StyledLink>
-          )}
-          {section.externalBtnLink?.length > 0 && (
-            <Styled.a
-              href={section.externalBtnLink}
-              rel="noopener noreferrer"
-              target="_blank"
+            <div
               sx={{
-                fontSize: 1,
-                "::after": {
-                  margin: "auto",
-                },
+                py: 2,
               }}
             >
-              {section.externalButtonLinkText}
-            </Styled.a>
+              <StyledLink href={section.buttonLink.slug}>
+                {section.buttonLink.slug}
+              </StyledLink>
+            </div>
+          )}
+          {section.externalBtnLink?.length > 0 && (
+            <div
+              sx={{
+                py: 2,
+              }}
+            >
+              <Styled.a
+                href={section.externalBtnLink}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {section.externalButtonLinkText}
+              </Styled.a>
+            </div>
           )}
         </div>
       </div>

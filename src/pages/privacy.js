@@ -11,6 +11,7 @@ const PrivacyPage = () => {
     graphql`
       query {
         datoCmsPrivacySection {
+          title
           pageTitle
           textNode {
             childMarkdownRemark {
@@ -22,11 +23,13 @@ const PrivacyPage = () => {
     `
   );
 
-  const { pageTitle, textNode } = datoCmsPrivacySection;
+  const { title, pageTitle, textNode } = datoCmsPrivacySection;
 
   return (
     <Layout>
-      <SEO title="Page two" />
+      <div sx={{ mt: 7 }}>
+        <SEO title={title} />
+      </div>
       <MainContainer>
         <div sx={{ maxWidth: "800px", margin: "0px auto" }}>
           <div sx={{ color: "highlight" }}>

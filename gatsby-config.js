@@ -6,11 +6,9 @@ const path = require(`path`);
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteURL: 'http://localhost:8000/',
-
+    title: `Amazon Template`,
+    description: `Kick off your next, great Amazon site with this tempalte.`,
+    author: `@SnackbarStudios`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -33,7 +31,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        include_favicon: false, // This will exclude favicon link tag
       },
     },
     {
